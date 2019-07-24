@@ -1,0 +1,62 @@
+public class Names {
+
+public static void display(ArrayList<String> names) {
+    for (int i = 0; i < names.size(); i = i + 1) {
+        System.out.println(names.get(i));
+    }
+}
+
+public static int find(String s, ArrayList<String> a) {
+    for (int i = 0; i < a.size(); i = i + 1) {
+        String str = a.get(i);
+        if (str.equals(s)) {
+            return i;
+        }
+    }
+    return -1;
+
+}
+
+public static void sort(ArrayList<String> names) {
+    for (int i = 0; i < names.size() - 1; i = i + 1) {
+        int Min = i;
+        for (int j = i + 1; j < names.size(); j = j + 1) {
+            if (names.get(j).compareTo(names.get(Min)) < 0) {
+                Min = j;
+            }
+        }
+        String tmp = names.get(i);
+        names.set(i, names.get(Min));
+        names.set(Min, tmp);
+
+    }
+
+}
+
+public static void getNames(ArrayList<String> fn, ArrayList<String> ln) throws IOException {
+    Scanner male = new Scanner(System.in);
+    System.out.println("What is the input file?");
+    String names = male.next();
+    File inpFile = new File(names);
+    Scanner in = new Scanner(inpFile);
+
+    while (in.hasNext()) {
+        String firstName = in.next();
+        String lastName = in.next();
+        fn.add(firstName);
+        ln.add(lastName);
+
+    }
+
+}
+
+private int countOccurence(String name, ArrayList<String> names){
+ int count = 0;
+ for(int i =0; i <= names.size; i++){
+    if(name.equalsIgnoreCase(names.get(i))){
+        count++;
+    }
+ }
+ return count;
+	}
+}
